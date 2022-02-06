@@ -8,8 +8,13 @@ struct matrix{
     matrix(){
         a.resize(dim, vector<int64_t>(dim, 0));
     }
+    matrix(int _dim){
+    	dim = _dim;
+    	a.resize(dim, vector<int64_t>(dim, 0));
+    }
     matrix operator*(matrix other){
-        matrix res = matrix();
+    	assert(dim == other.dim);
+        matrix res = matrix(dim);
         for(int i = 0; i < dim; ++i){
         	for(int j = 0; j < dim; ++j){
         		for(int k = 0; k < dim; ++k){
