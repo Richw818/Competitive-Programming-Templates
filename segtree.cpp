@@ -23,7 +23,7 @@ struct segtree{
 		for(int i = 0; i < MAXN; ++i)
 			tree[i+MAXN] = node(i, i+1);
 		for(int i = MAXN - 1; i > 0; --i){
-			tree[i] = node(tree[2*i].l, tree[2*i].r);
+			tree[i] = node(tree[2*i].l, tree[2*i+1].r);
 		}
 	}
 	void update(int i, int64_t v){
