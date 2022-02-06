@@ -21,9 +21,9 @@ struct matrix{
     matrix operator*(matrix other){
     	assert(dim == other.dim);
         matrix res = matrix(dim);
-        for(int i = 0; i < dim; ++i){
-        	for(int j = 0; j < dim; ++j){
-        		for(int k = 0; k < dim; ++k){
+        for(int k = 0; k < dim; ++k){
+        	for(int i = 0; i < dim; ++i){
+        		for(int j = 0; j < dim; ++j){
         			res.a[i][j] += a[i][k] * other.a[k][j];
         			res.a[i][j] %= MOD;
         		}
