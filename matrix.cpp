@@ -4,13 +4,19 @@ using namespace std;
 struct matrix{
     int dim = 2;
     int64_t MOD = 1e9 + 7;
-    vector<vector<int64_t>> a;
+    int64_t a[105][105];
     matrix(){
-        a.resize(dim, vector<int64_t>(dim, 0));
+        for(int i = 0; i < dim; ++i){
+        	for(int j = 0; j < dim; ++j)
+        		a[i][j] = 0;
+        }
     }
     matrix(int _dim){
     	dim = _dim;
-    	a.resize(dim, vector<int64_t>(dim, 0));
+    	for(int i = 0; i < dim; ++i){
+        	for(int j = 0; j < dim; ++j)
+        		a[i][j] = 0;
+        }
     }
     matrix operator*(matrix other){
     	assert(dim == other.dim);
