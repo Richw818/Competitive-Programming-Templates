@@ -3,7 +3,7 @@ using namespace std;
 
 struct matrix{
     int dim = 2;
-    const int64_t MOD = 1e9 + 7;
+    int64_t MOD = 1e9 + 7;
     vector<vector<int64_t>> a;
     matrix(){
         a.resize(dim, vector<int64_t>(dim, 0));
