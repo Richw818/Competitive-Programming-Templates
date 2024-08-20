@@ -1,6 +1,6 @@
 #pragma once
 
-template <const int customMod>
+template <const int M>
 class ModInt {
     int x;
     static int Mod;
@@ -16,8 +16,8 @@ public:
     }
 
     constexpr static int getMod() {
-        if (customMod > 0) {
-            return customMod;
+        if (M > 0) {
+            return M;
         }
         return Mod;
     }
