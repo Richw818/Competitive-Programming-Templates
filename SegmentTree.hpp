@@ -38,22 +38,22 @@ public:
         tree[v] = combine(tree[2 * v], tree[2 * v + 1]);
     }
 
-    void update(int v, int l, int r, int p, T val) {
+    void update(int v, int l, int r, int p, T upd) {
         if (r - l == 1) {
-            tree[v] = val;
+            tree[v] = upd;
             return;
         }
         int m = (l + r) >> 1;
         if (p < m) {
-            update(2 * v, l, m, p, val);
+            update(2 * v, l, m, p, upd);
         } else {
-            update(2 * v + 1, m, r, p, val);
+            update(2 * v + 1, m, r, p, upd);
         }
         pull(v);
     }
 
-    void update(int p, T val) {
-        update(1, 0, n, p, val);
+    void update(int p, T upd) {
+        update(1, 0, n, p, upd);
     }
 
     T query(int v, int l, int r, int ql, int qr) {
