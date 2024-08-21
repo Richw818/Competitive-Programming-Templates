@@ -16,7 +16,7 @@ public:
         return m[p];
     }
 
-    Matrix operator*=(Matrix& other) {
+    Matrix& operator*=(Matrix& other) {
         Matrix prod;
         for (int k = 0; k < N; k++) {
             for (int i = 0; i < N; i++) {
