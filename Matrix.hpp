@@ -16,7 +16,7 @@ public:
         return m[p];
     }
 
-    Matrix& operator*=(Matrix& other) {
+    Matrix operator*=(Matrix& other) {
         Matrix prod;
         for (int k = 0; k < N; k++) {
             for (int i = 0; i < N; i++) {
@@ -30,15 +30,8 @@ public:
     }
 
     Matrix operator*(Matrix& other) {
-        Matrix prod;
-        for (int k = 0; k < N; k++) {
-            for (int i = 0; i < N; i++) {
-                for (int j = 0; j < N; j++) {
-                    prod[i][j] += m[i][k] * other[k][j];
-                }
-            }
-        }
-        return prod;
+        Matrix prod(*this);
+        return prod *= other;
     }
 
     Matrix& operator^=(uint64_t p) {
@@ -57,17 +50,8 @@ public:
     }
 
     Matrix operator^(uint64_t p) {
-        Matrix power, base(*this);
-        for (int i = 0; i < N; i++) {
-            power[i][i] = 1;
-        }
-        for (; p; p >>= 1) {
-            if (p & 1) {
-                power *= base;
-            }
-            base *= base;
-        }
-        return power;
+        Matrix base(*this);
+        return base ^= p;
     }
 
     T at(int i, int j) {
