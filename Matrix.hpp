@@ -48,9 +48,9 @@ public:
         }
         for (; p; p >>= 1) {
             if (p & 1) {
-                power = power * base;
+                power *= base;
             }
-            base = base * base;
+            base *= base;
         }
         *this = power;
         return *this;
@@ -63,9 +63,9 @@ public:
         }
         for (; p; p >>= 1) {
             if (p & 1) {
-                power = power * base;
+                power *= base;
             }
-            base = base * base;
+            base *= base;
         }
         return power;
     }
