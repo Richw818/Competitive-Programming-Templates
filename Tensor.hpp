@@ -11,13 +11,13 @@ class Tensor {
     
     static_assert(D > 0);
 public:
-    Tensor(const std::array<int, D>& _shape) : shape(_shape) {
+    Tensor(const std::array<int, D>& _shape, T val = T()) : shape(_shape) {
         int x = 1;
         for (int i = D - 1; i >= 0; i--) {
             strides[i] = x;
             x *= shape[i];
         }
-        data.assign(x, T());
+        data.assign(x, val);
     }
  
     int find(const std::array<int, D>& idx) {

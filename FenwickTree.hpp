@@ -29,7 +29,7 @@ public:
         return query(r) - query(l - 1);
     }
 
-    int find(T k) {
+    int find(const T& k) {
         int x = 0;
         for (int i = 1 << (31 - __builtin_clz(n)); i > 0; i >>= 1) {
             if (i + x <= n && k > tree[i + x - 1]) {
