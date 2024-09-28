@@ -4,35 +4,41 @@
 #include <numeric>
 
 class UnionFind {
-    std::vector<int> _p, _size;
+    std::vector<int> p, s;
 public:
     UnionFind(int n) {
-        _p.resize(n);
-        std::iota(_p.begin(), _p.end(), 0);
-        _size.assign(n, 1);
+        p.resize(n);
+        std::iota(p.begin(), p.end(), 0);
+        s.assign(n, 1);
     }
-    int find(int n) {
-        if (_p[n] == n) {
-            return n;
+
+    int find(int x) {
+        if (p[x] == x) {
+            return x;
         }
-        _p[n] = find(_p[n]);
-        return _p[n];
+        p[x] = find(p[x]);
+        return p[x];
     }
-    int size(int n) {
-        n = find(n);
-        return _size[n];
+
+    int size(int x) {
+        return s[find(x)];
     }
-    bool merge(int a, int b) {
-        a = find(a);
-        b = find(b);
-        if (a == b) {
+
+    bool merge(int x, int y) {
+        x = find(x);
+        y = find(y);
+        if (x == y) {
             return false;
         }
-        if (_size[a] > _size[b]) {
-            std::swap(a, b);
+        if (s[x] > s[y]) {
+            std::swap(x, y);
         }
-        _size[b] += _size[a];
-        _p[a] = b;
+        s[y] += s[x];
+        p[x] = y;
         return true;
+    }
+
+    bool same(int x, int y) {
+        return find(x) == find(y);
     }
 };
